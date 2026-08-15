@@ -1,19 +1,19 @@
 services:
   postgres:
     image: postgres:16
-    container_name: downtimeprod-postgres
+    container_name: eventlink-postgres
     restart: unless-stopped
 
     environment:
       POSTGRES_DB: downtimeprod_db
-      POSTGRES_USER: downtimeprodADM
-      POSTGRES_PASSWORD: adm-231331Z
+      POSTGRES_USER: adminevent
+      POSTGRES_PASSWORD: 
 
     ports:
       - "5432:5432"
 
     volumes:
-      - downtimeprod_postgres_data:/var/lib/postgresql/data
+      - eventlink_postgres_data:/var/lib/postgresql/data
 
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U downtimeprod -d downtimeprod_db"]
@@ -22,4 +22,4 @@ services:
       retries: 5
 
 volumes:
-  downtimeprod_postgres_data:
+  eventlink_postgres_data:
