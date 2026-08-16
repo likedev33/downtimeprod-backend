@@ -1,3 +1,4 @@
+import { BaseEntity } from 'src/shared/entities/base.entity';
 import {
   Column,
   CreateDateColumn,
@@ -7,28 +8,33 @@ import {
 } from 'typeorm';
 
 @Entity({ name: 'location' })
-export class Location {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+export class Location extends BaseEntity {
 
-  @Column({ type: 'varchar', length: 50, unique: true })
-  code: string;
-
-  @Column({ type: 'varchar', length: 255 })
-  name: string;
-
-  @Column({ type: 'text', nullable: true })
-  address?: string;
-
-  @CreateDateColumn({
-    type: 'timestamp with time zone',
-    default: () => 'CURRENT_TIMESTAMP',
+  /**
+   * Functional unique code
+   */
+  @Column({
+    type: 'varchar',
+    length: 30,
+    unique: true,
   })
-  createdAt: Date;
-
-  @UpdateDateColumn({
-    type: 'timestamp with time zone',
-    default: () => 'CURRENT_TIMESTAMP',
+  code!: string;
+  /**
+   * Display name
+   */
+  @Column({
+    type: 'varchar',
+    length: 150,
   })
-  updatedAt: Date;
+  name!: string;
+
+  /**
+   * Display address
+   */
+  @Column({
+    type: 'varchar',
+    length: 150,
+  })
+  address!: string;
+
 }

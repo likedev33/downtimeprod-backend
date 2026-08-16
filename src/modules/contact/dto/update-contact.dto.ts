@@ -1,19 +1,9 @@
-import { IsOptional, IsString } from 'class-validator';
+import { PartialType } from '@nestjs/mapped-types';
+// Si vous utilisez @nestjs/swagger, vous pouvez aussi faire :
+// import { PartialType } from '@nestjs/swagger';
 
-export class UpdateContactDto {
-  @IsOptional()
-  @IsString()
-  code?: string;
+import { CreateContactDto } from './create-contact.dto';
 
-  @IsOptional()
-  @IsString()
-  name?: string;
-
-  @IsOptional()
-  @IsString()
-  email?: string;
-
-  @IsOptional()
-  @IsString()
-  phone?: string;
-}
+export class UpdateContactDto extends PartialType(
+  CreateContactDto,
+) {}

@@ -1,15 +1,27 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {
+  IsEmail,
+  IsEnum,
+  IsOptional,
+  IsString,
+  IsUrl,
+  Length,
+} from 'class-validator';
 
 export class CreateLocationDto {
-  @IsNotEmpty()
+  @ApiProperty()
   @IsString()
-  code: string;
+  @Length(2, 30)
+  code!: string;
 
-  @IsNotEmpty()
+  @ApiProperty()
   @IsString()
-  name: string;
+  @Length(2, 150)
+  name!: string;
 
-  @IsOptional()
+  @ApiProperty()
   @IsString()
-  address?: string;
+  @Length(2, 150)
+  address!: string;
+
 }

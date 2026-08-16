@@ -1,19 +1,40 @@
-import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
+/**
+ * ============================================================
+ * Module      : Contact
+ * Description : Creer un DTO pour validé les données des contacts provenant de  service
+ * Author      : Arezki CHEKKAL
+ * Date        : 2026-08-14
+ * Version     : 1.0.0
+ * ============================================================
+ */
+import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
+import {
+  IsEmail,
+  IsEnum,
+  IsOptional,
+  IsString,
+  IsUrl,
+  Length,
+} from 'class-validator';
 
 export class CreateContactDto {
-  @IsNotEmpty()
+  @ApiProperty()
   @IsString()
-  code: string;
+  @Length(2, 30)
+  code!: string;
 
-  @IsNotEmpty()
+  @ApiProperty()
   @IsString()
-  name: string;
+  @Length(2, 150)
+  name!: string;
 
-  @IsOptional()
+  @ApiProperty()
   @IsString()
-  email?: string;
+  @Length(2, 150)
+  email!: string;
 
-  @IsOptional()
+  @ApiProperty()
   @IsString()
-  phone?: string;
+  @Length(2, 150)
+  phone!: string;
 }

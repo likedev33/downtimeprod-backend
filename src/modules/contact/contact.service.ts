@@ -1,3 +1,12 @@
+/**
+ * ============================================================
+ * Module      : Contact
+ * Description : Manage contacts using EventLink
+ * Author      : Arezki CHEKKAL
+ * Date        : 2026-08-16
+ * Version     : 1.0.0
+ * ============================================================
+ */
 import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
